@@ -17,7 +17,7 @@ import javax.swing.JFileChooser;
  * @author Cobby Dollar
  */
 public class MusicRetailManagement extends javax.swing.JFrame {
-
+String fileName;
     /**
      * Creates new form MusicRetailManagement
      */
@@ -183,7 +183,7 @@ public class MusicRetailManagement extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -506,9 +506,14 @@ public class MusicRetailManagement extends javax.swing.JFrame {
         fc.setFileFilter(new FileTypeFilter(".mp3", "music File"));
         int result=fc.showOpenDialog(null);
          if(result==JFileChooser.APPROVE_OPTION)
-             lblFileName. 
-        
-        
+         {
+             cartItems.setText(fc.getSelectedFile().toString());
+         fileName = fc.getSelectedFile().toString( );
+         }
+         else{
+             cartItems.setText("canceled ope");
+              fileName = "the file";
+         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
