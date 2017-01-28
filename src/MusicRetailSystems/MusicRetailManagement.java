@@ -509,7 +509,7 @@ for(int j=0;j< files.length;j++)
  }
  cartItems.setText(valueToBeInserted);
   
-//             
+//             copy just one file
 //             cartItems.setText(fc.getSelectedFile().toString());
 //         fileName = fc.getSelectedFile().toString( );
          }
