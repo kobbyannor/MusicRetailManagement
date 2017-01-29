@@ -10,10 +10,15 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.awt.Color;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.security.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 
 /**
@@ -23,6 +28,10 @@ import javax.swing.JFileChooser;
 public class MusicRetailManagement extends javax.swing.JFrame {
 
     String fileName;
+    String mp3Source;
+    String mp3Destination;
+    private static File sourceFile;
+    private static File destinationFile;
 
     /**
      * Creates new form MusicRetailManagement
@@ -534,13 +543,13 @@ public class MusicRetailManagement extends javax.swing.JFrame {
 
         if (result == JFileChooser.APPROVE_OPTION) {
 
-            String valueToBeInserted = "";
-
-            for (int j = 0; j < files.length; j++) {
-                valueToBeInserted = valueToBeInserted + " " + files[j];
-            }
-            cartItems.setText(valueToBeInserted);
-
+          //  String valueToBeInserted = "";
+//            for (int j = 0; j < files.length; j++) {
+//                valueToBeInserted = valueToBeInserted + " " + files[j];
+//            }
+            cartItems.setText(fc.getSelectedFile().toString());
+            mp3Source = fc.getSelectedFile().toString();//readies the selected file to be copied
+            sourceFile = new File(mp3Source);
 //             copy just one file
 //             cartItems.setText(fc.getSelectedFile().toString());
 //         fileName = fc.getSelectedFile().toString( );
@@ -560,7 +569,13 @@ public class MusicRetailManagement extends javax.swing.JFrame {
 
             saveDemo.setText(fc.getSelectedFile().toString());
             fileName = fc.getSelectedFile().toString();
-
+            mp3Destination = fc.getSelectedFile().toString();
+            destinationFile = new File(mp3Destination);
+            try {
+                Files.copy(sourceFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException ex) {
+                Logger.getLogger(MusicRetailManagement.class.getName()).log(Level.SEVERE, null, ex);
+            }
             //date song was sold
             String nameOfSingleSold = fc.getSelectedFile().getName();
             musicSold.setText(nameOfSingleSold);
