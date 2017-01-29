@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.io.File;
 import java.security.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 import javax.swing.JFileChooser;
 
@@ -75,6 +76,8 @@ public class MusicRetailManagement extends javax.swing.JFrame {
         saveDemo = new javax.swing.JTextField();
         musicSold = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
+        singleSoldName = new javax.swing.JTextField();
+        singleSoldTime = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -366,11 +369,21 @@ public class MusicRetailManagement extends javax.swing.JFrame {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 223, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(singleSoldTime, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                    .addComponent(singleSoldName))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(singleSoldName, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62)
+                .addComponent(singleSoldTime, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(168, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Receipt", jPanel9);
@@ -548,12 +561,21 @@ public class MusicRetailManagement extends javax.swing.JFrame {
             saveDemo.setText(fc.getSelectedFile().toString());
             fileName = fc.getSelectedFile().toString();
 
-            String man = fc.getSelectedFile().getName();
-            musicSold.setText(man);
-            Calendar calendar = Calendar.getInstance();
-            java.util.Date now = calendar.getTime();
-            java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());
-            System.out.println(currentTimestamp);
+            //date song was sold
+            String nameOfSingleSold = fc.getSelectedFile().getName();
+            musicSold.setText(nameOfSingleSold);
+            singleSoldName.setText(nameOfSingleSold);
+            //date type 1
+//            Calendar calendar = Calendar.getInstance();
+//            java.util.Date now = calendar.getTime();
+//            java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());
+//            System.out.println(currentTimestamp);
+
+            //date type 2
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            String stringDate = dateFormat.format(new Date());
+            singleSoldTime.setText(stringDate);
+
         } else {
             saveDemo.setText("Single Purchase cancelled");
             fileName = "the file can";
@@ -639,5 +661,7 @@ public class MusicRetailManagement extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField musicSold;
     private javax.swing.JTextField saveDemo;
+    private javax.swing.JTextField singleSoldName;
+    private javax.swing.JTextField singleSoldTime;
     // End of variables declaration//GEN-END:variables
 }
