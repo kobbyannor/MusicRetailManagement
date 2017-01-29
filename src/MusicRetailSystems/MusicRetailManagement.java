@@ -44,7 +44,7 @@ public class MusicRetailManagement extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
+        addSingleBtn = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox4 = new javax.swing.JCheckBox();
@@ -70,8 +70,9 @@ public class MusicRetailManagement extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         cartItems = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        checkoutBtn = new javax.swing.JButton();
         saveDemo = new javax.swing.JTextField();
+        recordText = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
@@ -109,11 +110,11 @@ public class MusicRetailManagement extends javax.swing.JFrame {
 
         jCheckBox2.setText("International Singles");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setText("Add Single to Cart");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addSingleBtn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        addSingleBtn.setText("Add Single to Cart");
+        addSingleBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addSingleBtnActionPerformed(evt);
             }
         });
 
@@ -126,7 +127,7 @@ public class MusicRetailManagement extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jCheckBox1)
                     .addComponent(jCheckBox2)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addSingleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -137,7 +138,7 @@ public class MusicRetailManagement extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBox2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(addSingleBtn)
                 .addContainerGap())
         );
 
@@ -314,11 +315,11 @@ public class MusicRetailManagement extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel17.setText("Items in Cart");
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton4.setText("Checkout");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        checkoutBtn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        checkoutBtn.setText("Checkout");
+        checkoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                checkoutBtnActionPerformed(evt);
             }
         });
 
@@ -327,13 +328,19 @@ public class MusicRetailManagement extends javax.swing.JFrame {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(saveDemo, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(cartItems, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel17)
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cartItems, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel17)
+                            .addComponent(checkoutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(saveDemo, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(recordText, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -342,11 +349,13 @@ public class MusicRetailManagement extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel17)
                 .addGap(18, 18, 18)
-                .addComponent(saveDemo, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(saveDemo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(recordText, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(cartItems, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(checkoutBtn)
                 .addContainerGap())
         );
 
@@ -498,7 +507,7 @@ public class MusicRetailManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     final JFileChooser fc = new JFileChooser();
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void addSingleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSingleBtnActionPerformed
         // TODO add your handling code here:
 
         fc.setMultiSelectionEnabled(true);
@@ -525,9 +534,9 @@ public class MusicRetailManagement extends javax.swing.JFrame {
             cartItems.setText("canceled ope");
             fileName = "the file";
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_addSingleBtnActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void checkoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutBtnActionPerformed
         // TODO add your handling code here:
         // final JFileChooser fc = new JFileChooser();
 
@@ -537,11 +546,18 @@ public class MusicRetailManagement extends javax.swing.JFrame {
 
             saveDemo.setText(fc.getSelectedFile().toString());
             fileName = fc.getSelectedFile().toString();
+            
+               String man=fc.getSelectedFile().getName();
+        recordText.setText(man);
+            
         } else {
-            saveDemo.setText("canceled ope");
+            saveDemo.setText("Single Purchase cancelled");
             fileName = "the file can";
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_checkoutBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -579,10 +595,10 @@ public class MusicRetailManagement extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addSingleBtn;
     private javax.swing.JLabel cartItems;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton checkoutBtn;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
@@ -618,6 +634,7 @@ public class MusicRetailManagement extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField recordText;
     private javax.swing.JTextField saveDemo;
     // End of variables declaration//GEN-END:variables
 }
