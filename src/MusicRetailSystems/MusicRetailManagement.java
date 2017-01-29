@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package MusicRetailSystems;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -18,7 +19,9 @@ import javax.swing.JFileChooser;
  * @author Cobby Dollar
  */
 public class MusicRetailManagement extends javax.swing.JFrame {
-String fileName;
+
+    String fileName;
+
     /**
      * Creates new form MusicRetailManagement
      */
@@ -68,6 +71,7 @@ String fileName;
         cartItems = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        saveDemo = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
@@ -312,6 +316,11 @@ String fileName;
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton4.setText("Checkout");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -319,10 +328,12 @@ String fileName;
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cartItems, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel17)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(saveDemo, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(cartItems, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel17)
+                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -330,8 +341,10 @@ String fileName;
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cartItems, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(saveDemo, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(cartItems, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
                 .addContainerGap())
@@ -484,40 +497,51 @@ String fileName;
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    
-    
+    final JFileChooser fc = new JFileChooser();
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        final JFileChooser fc=new JFileChooser();
-        fc.setMultiSelectionEnabled(true);
-       //set directory to the music folder of user's computer
-        fc.setCurrentDirectory(new File(System.getProperty("user.home") + System.getProperty("file.separator")+ "Music"));
-        fc.setFileFilter(new FileTypeFilter(".mp3", "music File"));
-        int result=fc.showOpenDialog(null);
-        
-        File[] files = fc.getSelectedFiles();
-        
-         if(result==JFileChooser.APPROVE_OPTION)
-         {
-             
-             
-             String valueToBeInserted="";
 
-for(int j=0;j< files.length;j++)
- {
-   valueToBeInserted=valueToBeInserted + " " + files[j];
- }
- cartItems.setText(valueToBeInserted);
-  
+        fc.setMultiSelectionEnabled(true);
+        //set directory to the music folder of user's computer
+        fc.setCurrentDirectory(new File(System.getProperty("user.home") + System.getProperty("file.separator") + "Music"));
+        fc.setFileFilter(new FileTypeFilter(".mp3", "music File"));
+        int result = fc.showOpenDialog(null);
+
+        File[] files = fc.getSelectedFiles();
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+
+            String valueToBeInserted = "";
+
+            for (int j = 0; j < files.length; j++) {
+                valueToBeInserted = valueToBeInserted + " " + files[j];
+            }
+            cartItems.setText(valueToBeInserted);
+
 //             copy just one file
 //             cartItems.setText(fc.getSelectedFile().toString());
 //         fileName = fc.getSelectedFile().toString( );
-         }
-         else{
-             cartItems.setText("canceled ope");
-              fileName = "the file";
-         }
+        } else {
+            cartItems.setText("canceled ope");
+            fileName = "the file";
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        // final JFileChooser fc = new JFileChooser();
+
+        int result = fc.showSaveDialog(null);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+
+            saveDemo.setText(fc.getSelectedFile().toString());
+            fileName = fc.getSelectedFile().toString();
+        } else {
+            saveDemo.setText("canceled ope");
+            fileName = "the file can";
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -594,5 +618,6 @@ for(int j=0;j< files.length;j++)
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField saveDemo;
     // End of variables declaration//GEN-END:variables
 }
