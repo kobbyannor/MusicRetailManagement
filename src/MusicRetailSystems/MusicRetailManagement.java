@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.awt.Color;
 import java.io.File;
+import java.security.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Random;
 import javax.swing.JFileChooser;
@@ -72,7 +73,7 @@ public class MusicRetailManagement extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         checkoutBtn = new javax.swing.JButton();
         saveDemo = new javax.swing.JTextField();
-        recordText = new javax.swing.JTextField();
+        musicSold = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
@@ -340,7 +341,7 @@ public class MusicRetailManagement extends javax.swing.JFrame {
                                 .addComponent(saveDemo, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(recordText, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(musicSold, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -351,7 +352,7 @@ public class MusicRetailManagement extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(saveDemo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
-                .addComponent(recordText, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addComponent(musicSold, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(cartItems, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -546,17 +547,19 @@ public class MusicRetailManagement extends javax.swing.JFrame {
 
             saveDemo.setText(fc.getSelectedFile().toString());
             fileName = fc.getSelectedFile().toString();
-            
-               String man=fc.getSelectedFile().getName();
-        recordText.setText(man);
-            
+
+            String man = fc.getSelectedFile().getName();
+            musicSold.setText(man);
+            Calendar calendar = Calendar.getInstance();
+            java.util.Date now = calendar.getTime();
+            java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());
+            System.out.println(currentTimestamp);
         } else {
             saveDemo.setText("Single Purchase cancelled");
             fileName = "the file can";
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_checkoutBtnActionPerformed
 
     /**
@@ -634,7 +637,7 @@ public class MusicRetailManagement extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField recordText;
+    private javax.swing.JTextField musicSold;
     private javax.swing.JTextField saveDemo;
     // End of variables declaration//GEN-END:variables
 }
